@@ -39,7 +39,7 @@ body, html{
   background-color: #f7f7f7;
   border: none;
   width: 95%;
-  font-size: 3.1em;
+  font-size: 3.2em;
 }
 
 #calcMainDisp:focus{
@@ -58,7 +58,7 @@ button{
   height: 70px;
   margin: 10px 4px;
   color: white;
-  background-color: #102D44;
+  background-color: #21425C;
 }
 
 button:hover{
@@ -74,6 +74,11 @@ button:focus{
   background-color: #3E2561;
 }
 
-#additionButton{
+#num0Button{
+  width: 208px;
+}
 
+#equalsButton{
+  width: 208px;
+  margin-bottom: 30px;
 }

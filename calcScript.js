@@ -20,6 +20,7 @@
   let calcHead;
   let calcPrevDisp;
   let calcMainDisp;
+  let firstNum = true;
 
 
 
@@ -99,9 +100,14 @@
     additionB.id = 'additionButton';
     additionB.innerHTML = '+';
     keypad.appendChild(additionB);
+
+    multipleButton(0,0);
+
+    const equalsB = document.createElement('button');
+    equalsB.id = "equalsButton";
+    equalsB.innerHTML = "=";
+    keypad.appendChild(equalsB);
   }
-
-
 
   function idAssign(){
     calcHead = document.getElementById('calcHead');
@@ -114,7 +120,24 @@
     additionButton = document.getElementById('additionButton');
   }
 
+  function numToMainDisp(num){
+    calcMainDisp.value += num;
+  }
+
+  function control(event){
+    event.preventDefault();
+    if(firstNum == true){
+      calcMainDisp.value = '';
+      firstNum = false;
+    }
+
+    if(!isNaN(parseInt(event.key))  ){
+      numToMainDisp(event.key);
+    }
+  }
+
  (function init(){
    buildCalc();
    idAssign();
+   calcMainDisp.addEventListener('keydown', control);
  })()
