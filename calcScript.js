@@ -21,6 +21,9 @@
   let calcPrevDisp;
   let calcMainDisp;
   let firstNum = true;
+  let inputListAll = [];
+  let inputListNum = [];
+  let inputListArith = [];
 
 
 
@@ -63,7 +66,7 @@
 
     const divideB = document.createElement('button');
     divideB.id = 'divideButton';
-    divideB.innerHTML = "&times";
+    divideB.innerHTML = "&#247";
     keypad.appendChild(divideB);
 
 
@@ -83,7 +86,7 @@
 
     const multiplyB = document.createElement('button');
     multiplyB.id = "multiplyButton";
-    multiplyB.innerHTML = "&#247";
+    multiplyB.innerHTML = "&times";
     keypad.appendChild(multiplyB);
 
 
@@ -135,6 +138,34 @@
     }
   }
 
+  //Arithmetic Functions
+
+  function arithmeticFunction(symbol){
+    inputListAll.push(calcMainDisp.value);
+    inputListNum.push(calcMainDisp.value);
+    inputListAll.push(symbol);
+    inputListArith.push(symbol);
+    calcMainDisp.value = 0;
+    firstNum = true;
+    console.log(inputListAll);
+  }
+
+  function additionFunc(){
+    arithmeticFunction('+');
+  }
+
+  function subtractFunc(){
+    arithmeticFunction('-');
+  }
+
+  function multiplyFunc(){
+    arithmeticFunction('&times');
+  }
+
+  function divideFunc(){
+    arithmeticFunction('&#247');
+  }
+
   function control(event){
     event.preventDefault();
     if(firstNum == true){
@@ -144,10 +175,28 @@
     if(!isNaN(parseInt(event.key))  ){
       numToMainDisp(event.key);
     }
+    else if(event.key == '+'){
+      additionFunc();
+    }
+    else if(event.key == '-'){
+      subtractFunc();
+    }
+    else if(event.key == '*'){
+      multiplyFunc();
+    }
+    else if(event.key == '/'){
+      divideFunc();
+    }
   }
+
+  //End Arithmetic Functions
 
  (function init(){
    buildCalc();
    idAssign();
    calcMainDisp.addEventListener('keydown', control);
+   additionButton.addEventListener('click', additionFunc);
+   subtractButton.addEventListener('click', subtractFunc);
+   multiplyButton.addEventListener('click', multiplyFunc);
+   divideButton.addEventListener('click', divideFunc);
  })()

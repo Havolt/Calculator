@@ -6,7 +6,7 @@ body, html{
 #app{
   width: 480px;
   border-radius: 5%;
-  background-color: #080830;
+  background-color: #2A2A64;
   padding-top: 26px;
   margin: 0 auto;
 }
@@ -71,7 +71,7 @@ button:focus{
 
 #clearButton{
   width: 208px;
-  background-color: #3E2561;
+  background-color: #9b3737;
 }
 
 #num0Button{
@@ -81,4 +81,5 @@ button:focus{
 #equalsButton{
   width: 208px;
   margin-bottom: 30px;
+  background-color: #1a4c36;
 }
