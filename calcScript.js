@@ -74,6 +74,7 @@
         numButt.id = "num" + i + 'Button';
         numButt.value = i;
         numButt.innerHTML = i;
+        numButt.addEventListener('click', numToMainDisp);
         keypad.appendChild(numButt);
       }
     }
@@ -121,7 +122,17 @@
   }
 
   function numToMainDisp(num){
-    calcMainDisp.value += num;
+    console.log(num);
+    if(!isNaN(num)){
+      calcMainDisp.value += num;
+    }
+    else{
+      if(firstNum == true){
+        calcMainDisp.value = '';
+        firstNum = false;
+      }
+      calcMainDisp.value += num.srcElement.value;
+    }
   }
 
   function control(event){
@@ -130,7 +141,6 @@
       calcMainDisp.value = '';
       firstNum = false;
     }
-
     if(!isNaN(parseInt(event.key))  ){
       numToMainDisp(event.key);
     }
