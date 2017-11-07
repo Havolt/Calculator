@@ -44,3 +44,28 @@ body, html{
 #calcMainDisp:focus{
   outline: none;
 }
+
+#calcPad{
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+button{
+  font-size: 2.5em;
+  width: 100px;
+  height: 70px;
+  margin: 10px 4px;
+  color: white;
+  background-color: #102D44;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+#clearButton{
+  width: 208px;
+  height: 70px;
+  background-color: #3E2561;
+}
