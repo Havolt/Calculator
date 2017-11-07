@@ -24,6 +24,8 @@
   let inputListAll = [];
   let inputListNum = [];
   let inputListArith = [];
+  let floatTrue = false;
+  let total;
 
 
 
@@ -148,6 +150,7 @@
     calcMainDisp.value = 0;
     firstNum = true;
     console.log(inputListAll);
+    floatTrue = false;
   }
 
   function additionFunc(){
@@ -164,6 +167,27 @@
 
   function divideFunc(){
     arithmeticFunction('&#247');
+  }
+
+  //End Arithmetic Functions
+
+  function decimalFunc(){
+    if(firstNum == true){
+      calcMainDisp.value = '';
+      firstNum = false;
+    }
+    calcMainDisp.value += '.';
+    floatTrue = true;
+  }
+
+  function clearFunc(){
+    firstNum = true;
+    inputListAll = [];
+    inputListNum = [];
+    inputListArith = [];
+    floatTrue = false;
+    total = undefined;
+    calcMainDisp.value = 0;
   }
 
   function control(event){
@@ -187,9 +211,15 @@
     else if(event.key == '/'){
       divideFunc();
     }
+    else if(event.key == '.'){
+      decimalFunc();
+    }
+    else if(event.key == 'c' || event.key == 'Delete'){
+      clearFunc();
+    }
   }
 
-  //End Arithmetic Functions
+
 
  (function init(){
    buildCalc();
@@ -199,4 +229,6 @@
    subtractButton.addEventListener('click', subtractFunc);
    multiplyButton.addEventListener('click', multiplyFunc);
    divideButton.addEventListener('click', divideFunc);
+   decimalButton.addEventListener('click', decimalFunc);
+   clearButton.addEventListener('click', clearFunc);
  })()
