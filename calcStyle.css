@@ -71,6 +71,9 @@ button:focus{
 
 #clearButton{
   width: 208px;
-  height: 70px;
   background-color: #3E2561;
+}
+
+#additionButton{
+
 }

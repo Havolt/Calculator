@@ -28,6 +28,7 @@
   let divideButton;
   let multiplyButton;
   let subtractButton;
+  let additionButton;
 
   function buildCalc(){
     console.log('building');
@@ -54,29 +55,53 @@
     clearB.innerHTML = "C";
     keypad.appendChild(clearB);
 
+    const decimalB = document.createElement('button');
+    decimalB.id = "decimalButton";
+    decimalB.innerHTML = ".";
+    keypad.appendChild(decimalB);
+
     const divideB = document.createElement('button');
     divideB.id = 'divideButton';
     divideB.innerHTML = "&times";
     keypad.appendChild(divideB);
+
+
+
+    function multipleButton(num1, num2){
+      for(var i = num1; i <= num2; i++){
+        const numButt = document.createElement('button');
+        numButt.id = "num" + i + 'Button';
+        numButt.value = i;
+        numButt.innerHTML = i;
+        keypad.appendChild(numButt);
+      }
+    }
+
+    multipleButton(7,9);
 
     const multiplyB = document.createElement('button');
     multiplyB.id = "multiplyButton";
     multiplyB.innerHTML = "&#247";
     keypad.appendChild(multiplyB);
 
-    for(var i = 7; i <= 9; i++){
-      const numButt = document.createElement('button');
-      numButt.id = "num" + i + 'Button';
-      numButt.value = i;
-      numButt.innerHTML = i;
-      keypad.appendChild(numButt);
-    }
+
+
+    multipleButton(4,6);
 
     const subtractB = document.createElement('button');
     subtractB.id = 'subtractButton';
     subtractB.innerHTML = "-";
     keypad.appendChild(subtractB);
+
+    multipleButton(1,3);
+
+    const additionB = document.createElement('button');
+    additionB.id = 'additionButton';
+    additionB.innerHTML = '+';
+    keypad.appendChild(additionB);
   }
+
+
 
   function idAssign(){
     calcHead = document.getElementById('calcHead');
@@ -86,6 +111,7 @@
     divideButton = document.getElementById('divideButton');
     multiplyButton = document.getElementById('multiplyButton');
     subtractButton = document.getElementById('subtractButton');
+    additionButton = document.getElementById('additionButton');
   }
 
  (function init(){
