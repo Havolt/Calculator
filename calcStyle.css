@@ -1,0 +1,23 @@
+body, html{
+  background-color: #f7f7f7;
+  font-family: arial, sans-serif;;
+}
+
+#app{
+  width: 480px;
+  border-radius: 5%;
+  background-color: #080830;
+  padding-top: 26px;
+  margin: 0 auto;
+}
+
+#calcPrevDisp{
+  margin: 0 auto;
+  margin-top: 24px;
+  background-color: #f7f7f7;
+  font-size: 1.3em;
+  text-align: right;
+  width: 90%;
+  padding-top: 4px;
+  padding-right: 2px;
+}
