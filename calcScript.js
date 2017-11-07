@@ -12,6 +12,8 @@
 // 17 buttons
 
   let calcHead;
+  let calcPrevDisp;
+  let calcMainDisp;
 
   function buildCalc(){
     console.log('building');
@@ -19,14 +21,21 @@
     calcTop.id = "calcHead";
     app.appendChild(calcTop);
 
-    const calcPreviDisp = document.createElement('p');
-    calcPreviDisp.id = "calcPrevDisp";
-    calcPreviDisp.innerHTML = "12232 + 342203 + 345221 + 12342123";
-    calcTop.appendChild(calcPreviDisp);
+    const calcPrevDispl = document.createElement('p');
+    calcPrevDispl.id = "calcPrevDisp";
+    calcPrevDispl.innerHTML = "";
+    calcTop.appendChild(calcPrevDispl);
+
+    const calcMainDispl = document.createElement('input');
+    calcMainDispl.id = "calcMainDisp";
+    calcMainDispl.value = "0";
+    calcTop.appendChild(calcMainDispl);
   }
 
   function idAssign(){
     calcHead = document.getElementById('calcHead');
+    calcPrevDisp = document.getElementById('calcPrevDisp');
+    calcMainDisp = document.getElementById('calcMainDisp');
   }
 
  (function init(){

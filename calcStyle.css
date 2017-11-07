@@ -11,13 +11,36 @@ body, html{
   margin: 0 auto;
 }
 
+#calcHead{
+  width: 90%;
+  margin: 0 auto;
+  background-color: #f7f7f7;
+}
+
 #calcPrevDisp{
   margin: 0 auto;
+  height: 18px;
   margin-top: 24px;
   background-color: #f7f7f7;
   font-size: 1.3em;
   text-align: right;
-  width: 90%;
-  padding-top: 4px;
+  width: 98%;
+  padding-top: 6px;
   padding-right: 2px;
+  border: none;
+}
+
+#calcMainDisp{
+  padding-top: 10px;
+  margin: 0 auto;
+  display: block;
+  text-align: right;
+  background-color: #f7f7f7;
+  border: none;
+  width: 95%;
+  font-size: 3.1em;
+}
+
+#calcMainDisp:focus{
+  outline: none;
 }
