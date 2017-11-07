@@ -27,6 +27,7 @@
   let clearButton;
   let divideButton;
   let multiplyButton;
+  let subtractButton;
 
   function buildCalc(){
     console.log('building');
@@ -62,6 +63,19 @@
     multiplyB.id = "multiplyButton";
     multiplyB.innerHTML = "&#247";
     keypad.appendChild(multiplyB);
+
+    for(var i = 7; i <= 9; i++){
+      const numButt = document.createElement('button');
+      numButt.id = "num" + i + 'Button';
+      numButt.value = i;
+      numButt.innerHTML = i;
+      keypad.appendChild(numButt);
+    }
+
+    const subtractB = document.createElement('button');
+    subtractB.id = 'subtractButton';
+    subtractB.innerHTML = "-";
+    keypad.appendChild(subtractB);
   }
 
   function idAssign(){
@@ -71,6 +85,7 @@
     clearButton = document.getElementById('clearButton');
     divideButton = document.getElementById('divideButton');
     multiplyButton = document.getElementById('multiplyButton');
+    subtractButton = document.getElementById('subtractButton');
   }
 
  (function init(){
