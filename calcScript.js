@@ -246,7 +246,37 @@
       console.log(inputListArith[i]);
       calculations(inputListArith[i], inputListNum[0], inputListNum[1]);
     }
+
+    if(inputListNum[0] % Math.round(inputListNum[0]) !== 0){
+      let tempNum = (Math.round(inputListNum[0]*10000)/10000).toFixed(4).toString().split('');
+      let endNum = true;
+      console.log(tempNum);
+      for(i = 0; i < tempNum.length; i++){
+        if(tempNum[i] == '.'){
+          for(var j = tempNum.length-1; j > i; j--){
+            if(tempNum[j] == '0' && endNum){
+
+              tempNum.pop();
+              if(j == i+1){
+                tempNum[i].pop();
+                console.log('nope');
+                inputListNum[0] = parseFloat(tempNum.join(''));
+              }
+            }
+            else{
+              endNum = false;
+              inputListNum[0] = parseFloat(tempNum.join(''));
+              console.log('working?');
+            }
+          }
+        }
+      }
+    }
+
     calcMainDisp.value = inputListNum[0];
+
+    console.log(inputListNum);
+
     afterEqual = true;
     inputListNum.shift();
     inputListArith = [];
