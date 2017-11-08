@@ -143,8 +143,14 @@
   //Arithmetic Functions
 
   function arithmeticFunction(symbol){
-    inputListAll.push(calcMainDisp.value);
-    inputListNum.push(calcMainDisp.value);
+    if(calcMainDisp.value != ''){
+      inputListAll.push(calcMainDisp.value);
+      inputListNum.push(calcMainDisp.value);
+    }
+    else{
+      inputListAll.push(0);
+      inputListNum.push(0);
+    }
     inputListAll.push(symbol);
     inputListArith.push(symbol);
     calcMainDisp.value = 0;
@@ -197,7 +203,7 @@
   }
 
   function equalsFunc(){
-    console.log('egad');
+    console.log('working');
   }
 
   //End Utility Functions
