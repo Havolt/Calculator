@@ -27,6 +27,7 @@
   let floatTrue = false;
   let total;
   let tempTotal;
+  let afterEqual = false;
 
 
 
@@ -158,6 +159,7 @@
     firstNum = true;
     console.log(inputListAll);
     floatTrue = false;
+    afterEqual = false;
   }
 
   function additionFunc(){
@@ -203,7 +205,19 @@
     calcMainDisp.value = 0;
   }
 
+  var calculations = function(operator, num1, num2){
+    if(operator == '+'){
+      tempTotal = num1 + num2;
+      console.log(tempTotal);
+      //console.log(inputListNum);
+      inputListNum.shift();
+      inputListNum[0] = tempTotal;
+      console.log(inputListNum);
+    }
+  }
+
   function equalsFunc(){
+
     if(calcMainDisp.value != ''){
       inputListAll.push(parseFloat(calcMainDisp.value));
       inputListNum.push(parseFloat(calcMainDisp.value));
@@ -218,14 +232,13 @@
       console.log(inputListArith[i]);
       calculations(inputListArith[i], inputListNum[0], inputListNum[1]);
     }
+    calcMainDisp.value = inputListNum[0];
+    afterEqual = true;
+    inputListNum.shift();
+    inputListArith = [];
   }
 
-  function calculations(operator, num1, num2){
-    if(operator == '+'){
-      tempTotal = num1 + num2;
-      console.log(tempTotal);
-    }
-  }
+
 
   //End Utility Functions
 
@@ -235,7 +248,7 @@
       calcMainDisp.value = '';
       firstNum = false;
     }
-    if(!isNaN(parseInt(event.key))  ){
+    if(!isNaN(parseInt(event.key))  && afterEqual == false ){
       numToMainDisp(event.key);
     }
     else if(event.key == '+'){
@@ -274,4 +287,4 @@
    decimalButton.addEventListener('click', decimalFunc);
    clearButton.addEventListener('click', clearFunc);
    equalsButton.addEventListener('click', equalsFunc);
- })()
+ })();
