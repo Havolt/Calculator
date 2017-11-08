@@ -26,6 +26,7 @@
   let inputListArith = [];
   let floatTrue = false;
   let total;
+  let tempTotal;
 
 
 
@@ -144,8 +145,8 @@
 
   function arithmeticFunction(symbol){
     if(calcMainDisp.value != ''){
-      inputListAll.push(calcMainDisp.value);
-      inputListNum.push(calcMainDisp.value);
+      inputListAll.push(parseFloat(calcMainDisp.value));
+      inputListNum.push(parseFloat(calcMainDisp.value));
     }
     else{
       inputListAll.push(0);
@@ -203,7 +204,27 @@
   }
 
   function equalsFunc(){
-    console.log('working');
+    if(calcMainDisp.value != ''){
+
+      inputListAll.push(parseFloat(calcMainDisp.value));
+      inputListNum.push(parseFloat(calcMainDisp.value));
+
+      function calculations(operation, num1, num2){
+        if(operation == '+'){
+          tempTotal = parseFloat(num1 + num2);
+          console.log(num1 + num2);
+        }
+      }
+
+      for(var i = 0; i < inputListArith.length; i++){
+        console.log(inputListArith[i]);
+        calculations(inputListArith[i], inputListNum[0], inputListNum[1]);
+        inputListNum.shift();
+        inputListNum[0] = tempTotal;
+      }
+      tempTotal = undefined;
+      inputListArith = [];
+    }
   }
 
   //End Utility Functions
