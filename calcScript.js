@@ -129,16 +129,18 @@
   }
 
   function numToMainDisp(num){
-    console.log(num);
-    if(!isNaN(num)){
-      calcMainDisp.value += num;
-    }
-    else{
-      if(firstNum == true){
-        calcMainDisp.value = '';
-        firstNum = false;
+    if(!afterEqual){
+      console.log(num);
+      if(!isNaN(num)){
+        calcMainDisp.value += num;
       }
-      calcMainDisp.value += num.srcElement.value;
+      else{
+        if(firstNum == true){
+          calcMainDisp.value = '';
+          firstNum = false;
+        }
+        calcMainDisp.value += num.srcElement.value;
+      }
     }
   }
 
@@ -160,6 +162,7 @@
     console.log(inputListAll);
     floatTrue = false;
     afterEqual = false;
+    calcPrevDisp.innerHTML = inputListAll.join(' ');
   }
 
   function additionFunc(){
@@ -202,6 +205,8 @@
     inputListArith = [];
     floatTrue = false;
     total = undefined;
+    tempTotal;
+    afterEqual = false;
     calcMainDisp.value = 0;
   }
 
@@ -245,6 +250,8 @@
     afterEqual = true;
     inputListNum.shift();
     inputListArith = [];
+    inputListAll = [];
+    calcPrevDisp.innerHTML = '';
   }
 
 
