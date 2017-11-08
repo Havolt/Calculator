@@ -171,6 +171,8 @@
 
   //End Arithmetic Functions
 
+  //Decimal Place Function
+
   function decimalFunc(){
     if(firstNum == true){
       calcMainDisp.value = '';
@@ -179,6 +181,10 @@
     calcMainDisp.value += '.';
     floatTrue = true;
   }
+
+  //End Decimal Place function
+
+  //Utility Functions
 
   function clearFunc(){
     firstNum = true;
@@ -189,6 +195,12 @@
     total = undefined;
     calcMainDisp.value = 0;
   }
+
+  function equalsFunc(){
+    console.log('egad');
+  }
+
+  //End Utility Functions
 
   function control(event){
     event.preventDefault();
@@ -217,6 +229,9 @@
     else if(event.key == 'c' || event.key == 'Delete'){
       clearFunc();
     }
+    else if(event.key == '=' || event.key == "Enter"){
+      equalsFunc();
+    }
   }
 
 
@@ -231,4 +246,5 @@
    divideButton.addEventListener('click', divideFunc);
    decimalButton.addEventListener('click', decimalFunc);
    clearButton.addEventListener('click', clearFunc);
+   equalsButton.addEventListener('click', equalsFunc);
  })()
