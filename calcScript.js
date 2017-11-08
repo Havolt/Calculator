@@ -208,12 +208,21 @@
   var calculations = function(operator, num1, num2){
     if(operator == '+'){
       tempTotal = num1 + num2;
-      console.log(tempTotal);
-      //console.log(inputListNum);
-      inputListNum.shift();
-      inputListNum[0] = tempTotal;
-      console.log(inputListNum);
+
     }
+    else if(operator == '-'){
+      tempTotal = num1 - num2;
+    }
+    else if(operator == '&times'){
+      tempTotal = num1 * num2;
+    }
+    else if(operator == '&#247'){
+      tempTotal = num1 / num2;
+    }
+    console.log(tempTotal);
+    inputListNum.shift();
+    inputListNum[0] = tempTotal;
+    console.log(inputListNum);
   }
 
   function equalsFunc(){
