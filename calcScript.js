@@ -1,22 +1,4 @@
 
-//108 * 4 == keypad width
-
-// button width == 100px
-// amount inbetween == 8px
-
-
-//Number buttons 10
-
-//arithmetic buttons 4
-
-//equals button 1
-
-//decimal button 1
-
-//clear button 1
-
-// 17 buttons
-
   let calcHead;
   let calcPrevDisp;
   let calcMainDisp;
@@ -28,8 +10,7 @@
   let total;
   let tempTotal;
   let afterEqual = false;
-
-
+  let digitMax = false;
 
   //Button Assigns
   let clearButton;
@@ -39,7 +20,6 @@
   let additionButton;
 
   function buildCalc(){
-    console.log('building');
     const calcTop = document.createElement('div');
     calcTop.id = "calcHead";
     app.appendChild(calcTop);
@@ -130,7 +110,6 @@
 
   function numToMainDisp(num){
     if(!afterEqual){
-      console.log(num);
       if(!isNaN(num)){
         calcMainDisp.value += num;
       }
@@ -141,6 +120,10 @@
         }
         calcMainDisp.value += num.srcElement.value;
       }
+    }
+    if(calcMainDisp.value.length > 13){
+      digitMax = true;
+      clearFunc();
     }
   }
 
@@ -159,7 +142,6 @@
     inputListArith.push(symbol);
     calcMainDisp.value = 0;
     firstNum = true;
-    console.log(inputListAll);
     floatTrue = false;
     afterEqual = false;
     calcPrevDisp.innerHTML = inputListAll.join(' ');
@@ -208,6 +190,11 @@
     tempTotal;
     afterEqual = false;
     calcMainDisp.value = 0;
+    calcPrevDisp.innerHTML = '';
+    if(digitMax == true){
+      calcPrevDisp.innerHTML = 'Max Digit Reached';
+    }
+    digitMax = false;
   }
 
   var calculations = function(operator, num1, num2){
@@ -224,10 +211,8 @@
     else if(operator == '&#247'){
       tempTotal = num1 / num2;
     }
-    console.log(tempTotal);
     inputListNum.shift();
     inputListNum[0] = tempTotal;
-    console.log(inputListNum);
   }
 
   function equalsFunc(){
@@ -243,14 +228,12 @@
     calcMainDisp.value = '';
 
     for(var i = 0; i < inputListArith.length; i++){
-      console.log(inputListArith[i]);
       calculations(inputListArith[i], inputListNum[0], inputListNum[1]);
     }
 
     if(inputListNum[0] % Math.round(inputListNum[0]) !== 0){
       let tempNum = (Math.round(inputListNum[0]*10000)/10000).toFixed(4).toString().split('');
       let endNum = true;
-      console.log(tempNum);
       for(i = 0; i < tempNum.length; i++){
         if(tempNum[i] == '.'){
           for(var j = tempNum.length-1; j > i; j--){
@@ -259,14 +242,12 @@
               tempNum.pop();
               if(j == i+1){
                 tempNum[i].pop();
-                console.log('nope');
                 inputListNum[0] = parseFloat(tempNum.join(''));
               }
             }
             else{
               endNum = false;
               inputListNum[0] = parseFloat(tempNum.join(''));
-              console.log('working?');
             }
           }
         }
@@ -275,16 +256,17 @@
 
     calcMainDisp.value = inputListNum[0];
 
-    console.log(inputListNum);
-
     afterEqual = true;
     inputListNum.shift();
     inputListArith = [];
     inputListAll = [];
     calcPrevDisp.innerHTML = '';
+
+    if(calcMainDisp.value.length > 13){
+      digitMax = true;
+      clearFunc();
+    }
   }
-
-
 
   //End Utility Functions
 
@@ -319,8 +301,6 @@
       equalsFunc();
     }
   }
-
-
 
  (function init(){
    buildCalc();
